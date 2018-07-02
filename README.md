@@ -14,14 +14,16 @@ Summary: the LIBpcap interface to various kernel packet capture mechanism
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/libpcap-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/libpcap-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/libpcap-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/libpcap-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/libpcap-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/libpcap-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/libpcap-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/libpcap-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libpcap/badges/version.svg)](https://anaconda.org/conda-forge/libpcap)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libpcap/badges/downloads.svg)](https://anaconda.org/conda-forge/libpcap)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libpcap-green.svg)](https://anaconda.org/conda-forge/libpcap) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libpcap.svg)](https://anaconda.org/conda-forge/libpcap) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libpcap.svg)](https://anaconda.org/conda-forge/libpcap) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libpcap.svg)](https://anaconda.org/conda-forge/libpcap) |
 
 Installing libpcap
 ==================
