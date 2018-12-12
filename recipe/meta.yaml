@@ -20,6 +20,7 @@ requirements:
     - {{ compiler('c') }}
     - flex
     - bison
+    - m4
 
 test:
   commands:
