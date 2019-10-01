@@ -1,6 +1,6 @@
 {% set name = "libpcap" %}
-{% set version = "1.9.0" %}
-{% set sha256 = "2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019" %}
+{% set version = "1.9.1" %}
+{% set sha256 = "635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   skip: True  # [win]
 
 requirements:
