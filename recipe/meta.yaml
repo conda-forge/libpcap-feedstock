@@ -10,23 +10,29 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: http://www.tcpdump.org/release/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - fix-install.patch  # [win]
 
 build:
-  number: 0
-  skip: True  # [win]
+  number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - flex
-    - bison
-    - m4
+    - flex                  # [not win]
+    - bison                 # [not win]
+    - m4                    # [not win]
+    - cmake                 # [win]
+    - ninja                 # [win]
+    - winflexbison          # [win]
 
 test:
   commands:
-    - test -f $PREFIX/lib/libpcap.so      # [linux]
-    - test -f $PREFIX/lib/libpcap.dylib   # [osx]
-    - test -f $PREFIX/include/pcap.h      # [unix]
+    - test -f $PREFIX/lib/libpcap${SHLIB_EXT}   # [not win]
+    - test -f $PREFIX/include/pcap.h            # [not win]
+    - if not exist "%LIBRARY_LIB%\\pcap.lib" exit 1   # [win]
+    - if not exist "%LIBRARY_BIN%\\pcap.dll" exit 1   # [win]
+    - if not exist "%LIBRARY_INC%\\pcap.h" exit 1     # [win]
 
 about:
   home: www.tcpdump.org
