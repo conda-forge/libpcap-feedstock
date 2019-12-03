@@ -1,0 +1,23 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -2316,15 +2316,15 @@
+         # as that's where it expects it to be.
+         #
+         install(TARGETS ${LIBRARY_NAME} ${LIBRARY_NAME_STATIC}
+-                RUNTIME DESTINATION bin/amd64
+-                LIBRARY DESTINATION lib/amd64
+-                ARCHIVE DESTINATION lib/amd64)
++                RUNTIME DESTINATION bin
++                LIBRARY DESTINATION lib
++                ARCHIVE DESTINATION lib)
+         if(NOT MINGW)
+             install(FILES $<TARGET_FILE_DIR:${LIBRARY_NAME_STATIC}>/${LIBRARY_NAME_STATIC}.pdb
+-                    DESTINATION bin/amd64 OPTIONAL)
++                    DESTINATION bin OPTIONAL)
+             if(BUILD_SHARED_LIBS)
+                 install(FILES $<TARGET_PDB_FILE:${LIBRARY_NAME}>
+-                        DESTINATION bin/amd64 OPTIONAL)
++                        DESTINATION bin OPTIONAL)
+             endif(BUILD_SHARED_LIBS)
+         endif(NOT MINGW)
+     else(MSVC AND CMAKE_SIZEOF_VOID_P EQUAL 8)
