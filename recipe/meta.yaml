@@ -15,6 +15,7 @@ source:
 
 build:
   number: 1
+  skip: true  # [vc<14]
 
 requirements:
   build:
