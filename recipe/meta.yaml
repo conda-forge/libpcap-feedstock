@@ -23,6 +23,7 @@ requirements:
     - flex                  # [not win]
     - bison                 # [not win]
     - m4                    # [not win]
+    - make                  # [not win]
     - cmake                 # [win]
     - ninja                 # [win]
     - winflexbison          # [win]
