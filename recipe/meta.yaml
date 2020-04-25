@@ -14,8 +14,12 @@ source:
     - fix-install.patch  # [win]
 
 build:
-  number: 1
-  skip: true  # [vc<14]
+  number: 2
+  run_exports:
+    # Symbols were last removed on update from 1.7 to 1.8
+    # https://abi-laboratory.pro/index.php?view=timeline&l=libpcap
+    - {{ pin_subpackage(name, max_pin='x.x') }}
+  skip: True  # [win and vc<14]
 
 requirements:
   build:
@@ -23,6 +27,7 @@ requirements:
     - flex                  # [not win]
     - bison                 # [not win]
     - m4                    # [not win]
+    - make                  # [not win]
     - cmake                 # [win]
     - ninja                 # [win]
     - winflexbison          # [win]
@@ -37,7 +42,7 @@ test:
 
 about:
   home: www.tcpdump.org
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   summary: 'the LIBpcap interface to various kernel packet capture mechanism'
