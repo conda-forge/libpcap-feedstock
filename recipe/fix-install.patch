@@ -1,22 +1,24 @@
---- CMakeLists.txt
-+++ CMakeLists.txt
-@@ -2316,15 +2316,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 50bf1713..4b89d5e1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2607,15 +2607,15 @@ if(WIN32)
          # as that's where it expects it to be.
          #
          install(TARGETS ${LIBRARY_NAME} ${LIBRARY_NAME_STATIC}
--                RUNTIME DESTINATION bin/amd64
--                LIBRARY DESTINATION lib/amd64
--                ARCHIVE DESTINATION lib/amd64)
+-                RUNTIME DESTINATION bin/x64
+-                LIBRARY DESTINATION lib/x64
+-                ARCHIVE DESTINATION lib/x64)
 +                RUNTIME DESTINATION bin
 +                LIBRARY DESTINATION lib
 +                ARCHIVE DESTINATION lib)
          if(NOT MINGW)
              install(FILES $<TARGET_FILE_DIR:${LIBRARY_NAME_STATIC}>/${LIBRARY_NAME_STATIC}.pdb
--                    DESTINATION bin/amd64 OPTIONAL)
+-                    DESTINATION bin/x64 OPTIONAL)
 +                    DESTINATION bin OPTIONAL)
              if(BUILD_SHARED_LIBS)
                  install(FILES $<TARGET_PDB_FILE:${LIBRARY_NAME}>
--                        DESTINATION bin/amd64 OPTIONAL)
+-                        DESTINATION bin/x64 OPTIONAL)
 +                        DESTINATION bin OPTIONAL)
              endif(BUILD_SHARED_LIBS)
          endif(NOT MINGW)

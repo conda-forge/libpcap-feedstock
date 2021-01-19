@@ -1,0 +1,76 @@
+From a92d9f48ca5c42c23dc56fe686a73eae37e223af Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Mon, 18 Jan 2021 18:40:08 -0500
+Subject: [PATCH] Revert "Avoid #define collisions with <linux/filter.h> or
+ stuff it includes."
+
+This reverts commit 0bb0b261a05bd0f396429bf99984343c9bade3b1.
+---
+ pcap/bpf.h | 21 +--------------------
+ 1 file changed, 1 insertion(+), 20 deletions(-)
+
+diff --git a/pcap/bpf.h b/pcap/bpf.h
+index ccb93cc7..2a3219e4 100644
+--- a/pcap/bpf.h
++++ b/pcap/bpf.h
+@@ -58,21 +58,10 @@
+  * I don't have earlier versions available to check), or QNX-style
+  * multiple-include protection (as per GitHub pull request #394).
+  *
+- * We trust that they will define structures and macros and types in
+- * a fashion that's source-compatible and binary-compatible with our
+- * definitions.
+- *
+  * We do not check for BPF_MAJOR_VERSION, as that's defined by
+  * <linux/filter.h>, which is directly or indirectly included in some
+  * programs that also include pcap.h, and <linux/filter.h> doesn't
+- * define stuff we need.  We *do* protect against <linux/filter.h>
+- * defining various macros for BPF code itself; <linux/filter.h> says
+- *
+- *	Try and keep these values and structures similar to BSD, especially
+- *	the BPF code definitions which need to match so you can share filters
+- *
+- * so we trust that it will define them in a fashion that's source-compatible
+- * and binary-compatible with our definitions.
++ * define stuff we need.
+  *
+  * This also provides our own multiple-include protection.
+  */
+@@ -119,8 +108,6 @@ struct bpf_program {
+ 
+ #include <pcap/dlt.h>
+ 
+-#ifndef __LINUX_FILTER_H__
+-
+ /*
+  * The instruction encodings.
+  *
+@@ -241,8 +228,6 @@ struct bpf_program {
+ /*				0xf0	reserved */
+ /*				0xf8	reserved */
+ 
+-#endif /* __LINUX_FILTER_H__ */
+-
+ /*
+  * The instruction data structure.
+  */
+@@ -253,16 +238,12 @@ struct bpf_insn {
+ 	bpf_u_int32 k;
+ };
+ 
+-#ifndef __LINUX_FILTER_H__
+-
+ /*
+  * Macros for insn array initializers.
+  */
+ #define BPF_STMT(code, k) { (u_short)(code), 0, 0, k }
+ #define BPF_JUMP(code, k, jt, jf) { (u_short)(code), jt, jf, k }
+ 
+-#endif /* __LINUX_FILTER_H__ */
+-
+ PCAP_AVAILABLE_0_4
+ PCAP_API u_int	bpf_filter(const struct bpf_insn *, const u_char *, u_int, u_int);
+ 
+-- 
+2.26.2
+
