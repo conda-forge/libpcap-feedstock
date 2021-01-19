@@ -12,6 +12,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - fix-install.patch  # [win]
+    - 0001-Revert-Avoid-define-collisions-with-linux-filter.h-o.patch
 
 build:
   number: 0
@@ -24,6 +25,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - autoconf              # [not win]
     - flex                  # [not win]
     - bison                 # [not win]
     - m4                    # [not win]
@@ -31,6 +33,7 @@ requirements:
     - cmake                 # [win]
     - ninja                 # [win]
     - winflexbison          # [win]
+    - pkg-config            # [not win]
 
 test:
   commands:
