@@ -1,11 +1,11 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 50bf1713..4b89d5e1 100644
+index b83fbbd7..942cdb87 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -2607,15 +2607,15 @@ if(WIN32)
+@@ -2639,15 +2639,15 @@ if(WIN32 OR CYGWIN OR MSYS)
          # as that's where it expects it to be.
          #
-         install(TARGETS ${LIBRARY_NAME} ${LIBRARY_NAME_STATIC}
+         install(TARGETS ${LIBRARIES_TO_INSTALL}
 -                RUNTIME DESTINATION bin/x64
 -                LIBRARY DESTINATION lib/x64
 -                ARCHIVE DESTINATION lib/x64)
