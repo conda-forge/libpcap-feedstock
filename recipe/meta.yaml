@@ -34,7 +34,8 @@ requirements:
     - winflexbison          # [win]
     - pkg-config            # [not win]
   host:
-    - openssl
+    # For remote capture support
+    - openssl               # [win]
 
 
 test:
