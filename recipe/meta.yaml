@@ -12,6 +12,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - fix-install.patch  # [win]
+    - fixopenssl3.patch
 
 build:
   number: 1
