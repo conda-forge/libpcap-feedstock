@@ -1,6 +1,6 @@
 {% set name = "libpcap" %}
-{% set version = "1.10.4" %}
-{% set sha256 = "ed19a0383fad72e3ad435fd239d7cd80d64916b87269550159d20e47160ebe5f" %}
+{% set version = "1.10.6" %}
+{% set sha256 = "872dd11337fe1ab02ad9d4fee047c9da244d695c6ddf34e2ebb733efd4ed8aa9" %}
 
 package:
   name: {{ name|lower }}
@@ -15,7 +15,7 @@ source:
     - fixopenssl3.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # Symbols were last removed on update from 1.7 to 1.8
     # https://abi-laboratory.pro/index.php?view=timeline&l=libpcap
@@ -25,6 +25,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - autoconf              # [not win]
     - flex                  # [not win]
     - bison                 # [not win]
