@@ -3,7 +3,7 @@ About libpcap-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libpcap-feedstock/blob/main/LICENSE.txt)
 
-Home: www.tcpdump.org
+Home: https://www.tcpdump.org/
 
 Package license: BSD-3-Clause
 
@@ -11,7 +11,7 @@ Summary: the LIBpcap interface to various kernel packet capture mechanism
 
 Development: https://github.com/the-tcpdump-group/libpcap
 
-Documentation: http://www.tcpdump.org/#documentation
+Documentation: https://www.tcpdump.org/#documentation
 
 Current build status
 ====================
@@ -226,4 +226,5 @@ Feedstock Maintainers
 
 * [@nehaljwani](https://github.com/nehaljwani/)
 * [@seanyen](https://github.com/seanyen/)
+* [@wolfv](https://github.com/wolfv/)
 
