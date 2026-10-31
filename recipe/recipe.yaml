@@ -1,0 +1,66 @@
+context:
+  version: "1.10.7"
+
+package:
+  name: libpcap
+  version: ${{ version }}
+
+source:
+  url: https://www.tcpdump.org/release/libpcap-${{ version }}.tar.gz
+  sha256: 0b394ac90dbc0a9838ff97468e05c9c9a3e873dec2514cd58db65d859d296e31
+  patches:
+    - if: win
+      then: fix-install.patch
+    - fixopenssl3.patch
+
+build:
+  number: 0
+
+requirements:
+  run_exports:
+    # Symbols were last removed on update from 1.7 to 1.8.
+    # https://abi-laboratory.pro/index.php?view=timeline&l=libpcap
+    - ${{ pin_subpackage('libpcap', upper_bound='x.x') }}
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - if: win
+      then:
+        - cmake
+        - ninja
+        - winflexbison
+      else:
+        - autoconf
+        - flex
+        - bison
+        - m4
+        - make
+        - pkg-config
+  host:
+    - if: win
+      then: openssl
+
+tests:
+  - script:
+      - if: win
+        then:
+          - if not exist "%LIBRARY_LIB%\\pcap.lib" exit 1
+          - if not exist "%LIBRARY_BIN%\\pcap.dll" exit 1
+          - if not exist "%LIBRARY_INC%\\pcap.h" exit 1
+        else:
+          - test -f $PREFIX/lib/libpcap${SHLIB_EXT}
+          - test -f $PREFIX/include/pcap.h
+
+about:
+  homepage: https://www.tcpdump.org/
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: the LIBpcap interface to various kernel packet capture mechanism
+  documentation: https://www.tcpdump.org/#documentation
+  repository: https://github.com/the-tcpdump-group/libpcap
+
+extra:
+  recipe-maintainers:
+    - nehaljwani
+    - seanyen
+    - wolfv
